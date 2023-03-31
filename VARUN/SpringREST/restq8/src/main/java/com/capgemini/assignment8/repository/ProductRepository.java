@@ -1,0 +1,9 @@
+package com.capgemini.assignment8.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.capgemini.assignment8.product.Product;
+
+public interface ProductRepository extends CrudRepository<Product, String>{
+
+}

@@ -1,0 +1,41 @@
+package com.question9.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.question9.customer.Customer;
+import com.question9.repository.CustomerRepository;
+
+@Service
+public class CustomerService {
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	public List<Customer> getAllCustomer(){
+		List<Customer> customer = new ArrayList<>();
+		customerRepository.findAll().forEach(customer::add);
+		return customer;
+	}
+	
+	public void addCustomer(Customer customer) {
+		customerRepository.save(customer);
+	}
+	
+	public Optional<Customer> getCustomer(int id){
+		return customerRepository.findById(id);
+	}
+	
+	public void updateCustomer(Customer customer) {
+		customerRepository.save(customer);
+	}
+	
+	public void deleteCustomer(int id) {
+		customerRepository.deleteById(id);
+	}
+
+}

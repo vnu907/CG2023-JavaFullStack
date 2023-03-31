@@ -1,0 +1,50 @@
+package com.question7.controller;
+
+import java.util.List;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.question7.order.Order;
+import com.question7.service.ProductService;
+
+@RestController
+public class OrderController {
+	
+	@Autowired
+	private ProductService orderService;
+
+	@GetMapping("/order")
+	public List<Order> getAllTopic() {
+		return orderService.getAllOrder();
+	}
+
+	@PostMapping("/order")
+	public void addTopic(@RequestBody Order order) {
+		orderService.placeOrder(order);
+	}
+
+	@GetMapping("/order/{id}")
+	public Optional<Order> getOrder(@PathVariable String id) {
+		return orderService.getOrder(id);
+	}
+
+	@PutMapping("/order/{id}")
+	public void updateOrder(@RequestBody Order order, @PathVariable String id) {
+		orderService.updateOrder(order);
+	}
+
+	@DeleteMapping("/order/{id}")
+	public void deleteOrder(@PathVariable String id) {
+		orderService.deleteOrder(id);
+	}
+
+}

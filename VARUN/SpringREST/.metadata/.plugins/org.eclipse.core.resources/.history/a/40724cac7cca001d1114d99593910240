@@ -1,0 +1,74 @@
+package com.question4.card;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CardService {
+	
+public String checkCard(String cardNumber) {
+	 if (cardNumber.length() < 15 || cardNumber.length() > 19) {
+         return "Invalid Card Number";
+     }
+	 // Check if the first digit of the credit card number is a 4 (Visa)
+     if (cardNumber.charAt(0) == '4') {
+         return validateVisa(cardNumber);
+     }
+
+     // Check if the first digit of the credit card number is a 5 (MasterCard)
+     if (cardNumber.charAt(0) == '5') {
+         return validateMasterCard(cardNumber);
+     }
+
+     // Check if the first four digits of the credit card number are 2014 or 2149 (enRoute)
+     if (cardNumber.substring(0, 4).equals("2014") || cardNumber.substring(0, 4).equals("2149")) {
+         return validateEnRoute(cardNumber);
+     }
+
+     // Check if the first six digits of the credit card number are in one of the valid ranges (Discover)
+     if (cardNumber.substring(0, 6).compareTo("601100") >= 0 && cardNumber.substring(0, 6).compareTo("601199") <= 0
+             && !(cardNumber.substring(0, 6).compareTo("601110") >= 0 && cardNumber.substring(0, 6).compareTo("601119") <= 0)
+             && !(cardNumber.substring(0, 6).compareTo("601150") >= 0 && cardNumber.substring(0, 6).compareTo("601173") <= 0)
+             && !(cardNumber.substring(0, 6).compareTo("601175") >= 0 && cardNumber.substring(0, 6).compareTo("601176") <= 0)
+             && !(cardNumber.substring(0, 6).compareTo("601180") >= 0 && cardNumber.substring(0, 6).compareTo("601185") <= 0)) {
+         return validateDiscover(cardNumber);
+     }
+
+     // Check if the first four digits of the credit card number are in the range 3528 through 3589 (JCB)
+     if (cardNumber.substring(0, 4).compareTo("3528") >= 0 && cardNumber.substring(0, 4).compareTo("3589") <= 0) {
+         return validateJCB(cardNumber);
+     }
+
+     return false;
+ }
+
+ private boolean validateVisa(String creditCardNumber) {
+     return creditCardNumber.matches("^4[0-9]{12}(?:[0-9]{3})?$");
+ }
+
+ private boolean validateMasterCard(String creditCardNumber) {
+     return creditCardNumber.matches("^5[1-5][0-9]{14}$") || creditCardNumber.matches("^2[2-7][0-9]{14}$");
+ }
+
+	 
+	/*
+		if(cardNumber.length()== 16) {
+			if(cardNumber.charAt(0) == '5') {
+				return "MasterCard";
+			}
+//			else
+//				return "Visa";
+		}
+		else if(cardNumber.length() == 15) {
+			return "EnRoute";
+		}
+//		return "JCB";
+		else if(cardNumber.length()==19) {
+			if(cardNumber.charAt(0) == '4') {
+				return "Visa";
+		}
+		}
+		return "JCB";
+	}
+*/
+}
+

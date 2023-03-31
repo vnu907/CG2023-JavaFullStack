@@ -1,0 +1,15 @@
+package com.capgemini.assignment2;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.question2.Restquestion2Application;
+
+@SpringBootApplication
+public class Restquestion2Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Restquestion2Application.class, args);
+	}
+
+}
