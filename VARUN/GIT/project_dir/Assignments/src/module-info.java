@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Varun
- *
- */
-module SampleProj {
-}
