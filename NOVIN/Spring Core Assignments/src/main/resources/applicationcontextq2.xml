@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.q2.QuestionList"
+		name="question1" p:questionId="01"
+		p:question="Name any 5 programming language?">
+		<property name="answers">
+			<list>
+				<value>Java</value>
+				<value>C++</value>
+				<value>Python</value>
+				<value>PHP</value>
+				<value>Kotlin</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="com.q2.QuestionSet"
+		name="question2" p:questionId="02"
+		p:question="Name any 5 operating systems?">
+		<property name="answers">
+			<set>
+				<value>Windows</value>
+				<value>Mac OS</value>
+				<value>Linux</value>
+				<value>Android</value>
+				<value>iOS</value>
+			</set>
+		</property>
+	</bean>
+	
+	<bean class="com.q2.QuestionMap"
+		name="question3" p:questionId="03"
+		p:question="Name any 5 latest technologies?">
+		<property name="answers">
+			<map>
+				<entry key="1" value="Artificial Intelligence"/>
+				<entry key="2" value="Machine Learning"/>
+				<entry key="3" value="Data Science"/>
+				<entry key="4" value="Cloud Computing"/>
+				<entry key="5" value="Augmented Reality/Virtual Reality"/>
+			</map>
+		</property>
+	</bean>
+</beans>

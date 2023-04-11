@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="address" class="com.q1.Address">
+		<constructor-arg value="123 Main St" />
+		<constructor-arg value="Anytown" />
+		<constructor-arg value="CA" />
+		<constructor-arg value="12345" />
+		<constructor-arg value="USA" />
+	</bean>
+	<bean id="customer" class="com.q1.Customer">
+		<constructor-arg value="1" />
+		<constructor-arg value="John Doe" />
+		<constructor-arg value="123-456-7890" />
+		<constructor-arg ref="address" />
+	</bean>
+</beans>

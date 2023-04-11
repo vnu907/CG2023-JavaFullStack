@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- The first <bean> element defines a bean named bankAccountRepository 
+		with the class com.assignment.question3.BankAccountRepositoryImpl. -->
+	<bean id="bankAccountRepository"
+		class="com.q3.BankAccountRepositoryImpl" />
+	<!-- The second <bean> element defines a bean named bankAccountService with 
+		the class com.assignment.question3.BankAccountServiceImpl. It also injects 
+		the bankAccountRepository bean into the BankAccountServiceImpl instance using 
+		a <property> element with the name attribute set to "bankAccountRepository" 
+		and the ref attribute set to "bankAccountRepository". -->
+	<bean id="bankAccountService"
+		class="com.q3.BankAccountServiceImpl">
+		<property name="bankAccountRepository"
+			ref="bankAccountRepository" />
+	</bean>
+	<!-- The third <bean> element defines a bean named bankAccountController 
+		with the class com.assignment.question3.BankAccountController. It uses the 
+		autowire attribute with a value of "byType" to specify that Spring should 
+		automatically wire the bankAccountService property of the BankAccountController 
+		class with the BankAccountServiceImpl bean -->
+	<bean id="bankAccountController"
+		class="com.q3.BankAccountController" autowire="byType" />
+	<!-- Autowire byName -->
+	<!--<property name="bankAccountService" ref="bankAccountService" /> -->
+
+	<!-- Autowire byType -->
+	<!--<property name="bankAccountService" ref="bankAccountServiceImpl" /> -->
+
+	<!-- Autowire by constructor -->
+	<!--<constructor-arg ref="bankAccountService" /> -->
+</beans>
